@@ -168,6 +168,7 @@ class SciHub(object):
             retry_times += 1
         tot_size = int(res.headers['Content-Length']) if 'Content-Length' in res.headers else 0
         out_file_path = os.path.join(self.out, pdf['title']+'.pdf')
+        out_file_path = os.path.join(self.out, self.doi.replace('/', '_'))
         downl_size = 0
         with open(out_file_path, 'wb') as f:
             for data in res.iter_content(chunk_size=1024, decode_unicode=False):
